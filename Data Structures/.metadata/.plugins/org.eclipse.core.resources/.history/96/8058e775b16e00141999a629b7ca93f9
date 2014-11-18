@@ -1,0 +1,134 @@
+/**
+ * 
+ */
+
+/**
+ * @author Nisarg Binary Tree Implementation and Traversal
+ */
+public class BTree {
+
+	public class Node {
+		Node left;
+		Node right;
+		int data;
+
+		public Node(int data) {
+			this.data = data;
+		}
+	}
+
+	public void insertNode(Node root, int data) {
+		if (data <= root.data) {
+			if (root.left != null) {
+				insertNode(root.left, data);
+			} else {
+				root.left = new Node(data);
+			}
+		} else if (data > root.data) {
+			if (root.right != null) {
+				insertNode(root.right, data);
+			} else
+				root.right = new Node(data);
+		}
+	}
+
+	public void inOrderTraversal(Node root) {
+		if (root == null) {
+			return;
+		} else {
+			inOrderTraversal(root.left);
+			System.out.println(root.data + " ");
+			inOrderTraversal(root.right);
+		}
+	}
+
+	public void preOrderTraversal(Node root) {
+		if (root == null) {
+			return;
+		} else {
+			System.out.println(root.data + " ");
+			inOrderTraversal(root.left);
+			inOrderTraversal(root.right);
+		}
+	}
+
+	public void postOrderTraversal(Node root) {
+		if (root == null) {
+			return;
+		} else {
+			inOrderTraversal(root.left);
+			inOrderTraversal(root.right);
+			System.out.println(root.data + " ");
+		}
+	}
+
+	public int height(Node root) {
+		if (root == null)
+			return 0;
+		else {
+			int l_height = height(root.left);
+			int r_height = height(root.right);
+
+			if (l_height > r_height)
+				return l_height + 1;
+			else
+				return r_height + 1;
+		}
+	}
+
+	/**
+	 * Level Order Traversal with O(n^2) time complexity
+	 * 
+	 * @param root
+	 */
+	public void levelOrderTraversal(Node root) {
+		// TODO Auto-generated method stub
+		if (root == null)
+			return;
+		else {
+			int h = height(root);
+			for (int i = 1; i <= h; i++) {
+				printLevelOrder(root, i);
+			}
+		}
+	}
+
+	public void printLevelOrder(Node root, int level) {
+		if (root == null)
+			return;
+		if (level == 1)
+			System.out.println(root.data + " ");
+		else if (level > 1) {
+			printLevelOrder(root.left, level - 1);
+			printLevelOrder(root.right, level - 1);
+		}
+	}
+
+	/**
+	 * Level Order Traversal using queue with O(n) time complexity
+	 */
+	public void levelOrderTraversalUsingQueue(Node root) {
+
+	}
+
+	/**
+	 * @param args
+	 */
+	public void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node root = new Node(4);
+		insertNode(root, 1);
+		insertNode(root, 5);
+		insertNode(root, 3);
+		insertNode(root, 6);
+		insertNode(root, 2);
+		insertNode(root, 8);
+		insertNode(root, 1);
+
+		inOrderTraversal(root);
+		preOrderTraversal(root);
+		postOrderTraversal(root);
+		levelOrderTraversal(root);
+	}
+
+}
