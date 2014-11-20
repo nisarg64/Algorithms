@@ -2,7 +2,7 @@ public class StringAddition {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		getSum("123", "30");
+		getSum("123", "37");
 	}
 
 	public static void getSum(String num1, String num2) {

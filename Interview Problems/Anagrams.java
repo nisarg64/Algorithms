@@ -9,11 +9,14 @@ public class Anagrams {
 		// TODO Auto-generated method stub
 		checkAnagram("nisarg", "grains");
 		String[] list = { "nisarg", "abcd", "cdba", "grains" };
+		String[] list1 = {};
 		getAnagramList(list);
 	}
 
 	public static void getAnagramList(String[] list) {
 		// TODO Auto-generated method stub
+		if (list.length == 0)
+			return;
 		HashMap<String, ArrayList<String>> anagramList = new LinkedHashMap<String, ArrayList<String>>();
 		for (String word : list) {
 			String key = sortString(word);
@@ -37,10 +40,15 @@ public class Anagrams {
 
 	public static void checkAnagram(String string, String string2) {
 		// TODO Auto-generated method stub
-		boolean isAnagram = sortString(string).equals(sortString(string2));
-		if (isAnagram)
-			System.out.println("Anagrams!");
-		else
+		if (string == null && string2 == null)
+			return;
+		else if (string.length() == string2.length()) {
+			boolean isAnagram = sortString(string).equals(sortString(string2));
+			if (isAnagram)
+				System.out.println("Anagrams!");
+			else
+				System.out.println("Not Anagrams!");
+		} else
 			System.out.println("Not Anagrams!");
 	}
 
