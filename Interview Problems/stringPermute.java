@@ -8,8 +8,8 @@ public class stringPermute {
 
 	private static void permute(String str, String prefix) {
 		// TODO Auto-generated method stub
-		//System.out.println("Prefix:" + prefix);
-		//System.out.println("String:" + str);
+		// System.out.println("Prefix:" + prefix);
+		// System.out.println("String:" + str);
 		int n = str.length();
 		if (n == 0)
 			System.out.println(prefix);

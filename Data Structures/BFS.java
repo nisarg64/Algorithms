@@ -10,7 +10,7 @@ public class BFS {
 		q.enqueue(s);
 
 		while (!q.isEmpty()) {
-			s = (int) q.dequeue();
+			s = (Integer)q.dequeue();
 			System.out.print(s + " ");
 			for (int i = 0; i < g.adjList.get(s).size(); i++) {
 				if (!visited[g.adjList.get(s).get(i)]) {

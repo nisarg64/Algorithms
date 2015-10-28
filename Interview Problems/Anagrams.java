@@ -9,7 +9,6 @@ public class Anagrams {
 		// TODO Auto-generated method stub
 		checkAnagram("nisarg", "grains");
 		String[] list = { "nisarg", "abcd", "cdba", "grains" };
-		String[] list1 = {};
 		getAnagramList(list);
 	}
 
@@ -22,15 +21,13 @@ public class Anagrams {
 			String key = sortString(word);
 			if (!anagramList.containsKey(key)) {
 				anagramList.put(key, new ArrayList<String>());
-				anagramList.get(key).add(word);
-			} else {
-				anagramList.get(key).add(word);
 			}
+			anagramList.get(key).add(word);
 		}
 
 		for (String keys : anagramList.keySet()) {
 
-			ArrayList<String> anagrams = anagramList.get(keys.toString());
+			ArrayList<String> anagrams = anagramList.get(keys);
 
 			for (int i = 0; i < anagrams.size(); i++)
 				System.out.print(anagrams.get(i) + " ");
@@ -40,7 +37,7 @@ public class Anagrams {
 
 	public static void checkAnagram(String string, String string2) {
 		// TODO Auto-generated method stub
-		if (string == null && string2 == null)
+		if (string == null || string2 == null)
 			return;
 		else if (string.length() == string2.length()) {
 			boolean isAnagram = sortString(string).equals(sortString(string2));
